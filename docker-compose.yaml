@@ -1,0 +1,25 @@
+version: "3"
+services:
+  browser:
+    image: ghcr.io/browserless/chromium:latest
+    environment:
+      - CONCURRENT=40
+      - QUEUED=20
+      - CORS=true
+      - CORS_MAX_AGE=300
+      - DATA_DIR=/tmp/my-profile
+      - TOKEN=6R0W53R135510
+    volumes:
+      - ./my-profile:/tmp/my-profile
+    ports:
+      - "3000:3000"
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "19001:19001"
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+      MINIO_API_SELECT_PARQUET: on
+    command: server --console-address :19001 --quiet /data
