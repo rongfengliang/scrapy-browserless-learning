@@ -9,6 +9,14 @@ python -m venv venv
 source venv/bin/activate
 ```
 
+* starting container service
+
+```code
+docker-compose up -d
+
+create s3 bucket mydemo (localhost:9000)
+```
+
 * running
 
 ```code
