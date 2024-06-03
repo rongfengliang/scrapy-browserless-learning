@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import uuid
 import scrapy
 
 import json
@@ -9,7 +10,7 @@ from dalongdemo.items import DalongdemoItem
 
 class BlogsSpider(scrapy.Spider):
     name = "blogs"
-
+    id =  uuid.uuid1()
     def start_requests(self):
 
         urls = [
